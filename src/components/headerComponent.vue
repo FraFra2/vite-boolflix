@@ -4,18 +4,19 @@ export default {
   data() {
     return {
       store,
-      classes: "border border-slate-500 px-8 py-4 text-2xl rounded-2xl mx-4"
+      classes: "border border-slate-500 px-8 py-4 text-2xl rounded-2xl mx-4 xl:px-2 py-1"
     }
   }
 }
 </script>
 
 <template>
-  <header class = "bg-gray-900 sticky top-0">
-    <p class = "text-center">
+  <header class = "bg-gray-900">
+    <div class = "text-center">
       <h1 class = "text-red-600 font-bold text-8xl pt-4">BOOLFLIX</h1>
-    </p>
-    <div class = "flex justify-center items-center py-8">
+    </div>
+    <div class = "flex justify-center items-center py-8 xl:pb-8">
+
       <div class = "flex flex-col gap-y-2 sm:flex-row">
         <input v-model = "
         store.queryToSearch" 
