@@ -3,5 +3,5 @@ import {reactive} from "vue"
 export const store = reactive({
     filmResults: [],
     serieResults: [],
-    queryToSearch: "spiderman"
+    queryToSearch: "Kung Fu Panda"
 });

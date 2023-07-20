@@ -89,6 +89,7 @@ export default {
         </h2>
       </div>
       <div>
+
         <ul class = "grid grid-cols-1 justify-items-center md:grid-cols-3 xl:grid-cols-5 gap-2">
           <singleCardComponent
               v-for="item in store.filmResults"
@@ -100,6 +101,7 @@ export default {
               :cover = "item.poster_path"
           />
         </ul>
+
       </div>
 
       <!-- SERIE TV -->
@@ -109,6 +111,7 @@ export default {
         </h2>
       </div>
       <div>
+
         <ul class = "grid grid-cols-1 justify-items-center md:grid-cols-3 xl:grid-cols-5 gap-2">
           <singleCardComponent
               v-for="item in store.serieResults"
@@ -120,6 +123,7 @@ export default {
               :cover = "item.poster_path"
           />
         </ul>
+
       </div>
     </section>
   </main>

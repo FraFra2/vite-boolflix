@@ -16,6 +16,9 @@ export default {
   data() {
     return {
       hover: false,
+      roundedVote: (this.vote / 2).toFixed(2),
+      ratingClick: false
+
     }
   },
   computed:{
@@ -35,12 +38,11 @@ export default {
       }
     },
     ratingTransform(){
-      let roundedVote = Math.round(this.vote / 2);
       let thisArr = [];
-      if (roundedVote < 1){
-        roundedVote = 1
+      if (this.roundedVote < 1){
+        this.roundedVote = 1
       }
-      for (let index = 0; index < roundedVote; index++) {
+      for (let index = 0; index < this.roundedVote; index++) {
         thisArr.push('<i class="fa-solid fa-star fa-2xs" style="color: #ff0000;"></i>');
       }
       while (thisArr.length < 5){
@@ -51,7 +53,13 @@ export default {
       
   },
   methods:{
-    
+    changeRateVisibility(){
+      if(this.ratingClick == false){
+        this.ratingClick = true
+      }else{
+        this.ratingClick = false
+      }
+    }
   },
   created(){
 
@@ -81,7 +89,11 @@ export default {
             "
             p-4
             text-white
+            h-full
+            w-full
             absolute
+            bg-gray-800/20
+            rounded-lg
             z-1
             top-0
             left-0
@@ -89,13 +101,16 @@ export default {
 
           <div
             class = "
-            flex flex-col items-center
+            flex flex-col items-center justify-center
             mb-4
           ">
           <lang-flag :iso="lang.toLowerCase()" :squared="false" class = "flag mb-1"/>
 
-          <div class ="bg-[rgba(0, 0, 0, 0.5)]" v-html="ratingTransform">
+          <div @click = "changeRateVisibility()" v-html="ratingTransform">
             
+          </div>
+          <div v-if = "ratingClick" class = "text-[#ff0000] text-4xl" >
+            {{ roundedVote }}
           </div>
         </div>
         <span class = "text-lg">
