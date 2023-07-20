@@ -1,20 +1,25 @@
 <script>
 import { store } from "../store.js"
+import navBarComponent from './navBarComponent.vue'
+
 export default {
   data() {
     return {
       store,
       classes: "border border-slate-500 px-8 py-4 text-2xl rounded-2xl mx-4 xl:px-2 py-1"
     }
+  },
+  components:{
+    navBarComponent
   }
 }
 </script>
 
 <template>
   <header class = "bg-gray-900">
-    <div class = "text-center">
-      <h1 class = "text-red-600 font-bold text-8xl pt-4">BOOLFLIX</h1>
-    </div>
+    
+    <navBarComponent/>
+    
     <div class = "flex justify-center items-center py-8 xl:pb-8">
 
       <div class = "flex flex-col gap-y-2 sm:flex-row">
@@ -35,7 +40,5 @@ export default {
 </template>
 
 <style scoped>
-  h1{
-    font-family: 'Bebas Neue', sans-serif;
-  }
+  
 </style>

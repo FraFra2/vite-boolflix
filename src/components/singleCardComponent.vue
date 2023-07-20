@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       hover: false,
-      roundedVote: (this.vote / 2).toFixed(2),
+      roundedVote: (this.vote / 2).toFixed(2) ,
       ratingClick: false
 
     }
@@ -38,11 +38,12 @@ export default {
       }
     },
     ratingTransform(){
+      let roundedVote = Math.floor((this.vote / 2))
       let thisArr = [];
-      if (this.roundedVote < 1){
-        this.roundedVote = 1
+      if (roundedVote < 1){
+        roundedVote = 1
       }
-      for (let index = 0; index < this.roundedVote; index++) {
+      for (let index = 0; index < roundedVote; index++) {
         thisArr.push('<i class="fa-solid fa-star fa-2xs" style="color: #ff0000;"></i>');
       }
       while (thisArr.length < 5){

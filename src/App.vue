@@ -83,48 +83,99 @@ export default {
   <main>
     <section class = "container mx-auto text-3xl pb-8">
       <!-- FILM -->
-      <div class = "text-center text-red-600 py-6 text-6xl">
-        <h2>
-          FILM
-        </h2>
+      <div v-if = "store.selectedCategory == 'Movies'" class="film-container">
+        <div class = "text-center text-red-600 py-6 text-6xl">
+          <h2>
+            MOVIES
+          </h2>
+        </div>   
+        <div>
+  
+          <ul class = "grid grid-cols-1 justify-items-center md:grid-cols-3 xl:grid-cols-5 gap-2">
+            <singleCardComponent
+                v-for="item in store.filmResults"
+                :key = "item.id" 
+                :name = "item.title" 
+                :originalName = "item.original_title"
+                :lang = "item.original_language"
+                :vote = "item.vote_average"
+                :cover = "item.poster_path"
+            />
+          </ul>
+  
+        </div>
       </div>
-      <div>
-
-        <ul class = "grid grid-cols-1 justify-items-center md:grid-cols-3 xl:grid-cols-5 gap-2">
-          <singleCardComponent
-              v-for="item in store.filmResults"
-              :key = "item.id" 
-              :name = "item.title" 
-              :originalName = "item.original_title"
-              :lang = "item.original_language"
-              :vote = "item.vote_average"
-              :cover = "item.poster_path"
-          />
-        </ul>
-
-      </div>
+      
 
       <!-- SERIE TV -->
-      <div class = "text-center text-red-600 py-6 text-6xl">
-        <h2>
-          SERIE TV
-        </h2>
+      <div v-else-if = "store.selectedCategory == 'TV'" class="tv-container">
+        <div class = "text-center text-red-600 py-6 text-6xl">
+          <h2>
+            TV SERIES
+          </h2>
+        </div>
+        <div>
+  
+          <ul class = "grid grid-cols-1 justify-items-center md:grid-cols-3 xl:grid-cols-5 gap-2">
+            <singleCardComponent
+                v-for="item in store.serieResults"
+                :key = "item.id" 
+                :name = "item.name" 
+                :originalName = "item.original_name"
+                :lang = "item.original_language"
+                :vote = "item.vote_average"
+                :cover = "item.poster_path"
+            />
+          </ul>
+  
+        </div>
       </div>
-      <div>
-
-        <ul class = "grid grid-cols-1 justify-items-center md:grid-cols-3 xl:grid-cols-5 gap-2">
-          <singleCardComponent
-              v-for="item in store.serieResults"
-              :key = "item.id" 
-              :name = "item.name" 
-              :originalName = "item.original_name"
-              :lang = "item.original_language"
-              :vote = "item.vote_average"
-              :cover = "item.poster_path"
-          />
-        </ul>
-
+      
+      <div v-else class="both">
+        <div class = "text-center text-red-600 py-6 text-6xl">
+          <h2>
+            MOVIES
+          </h2>
+        </div>   
+        <div>
+  
+          <ul class = "grid grid-cols-1 justify-items-center md:grid-cols-3 xl:grid-cols-5 gap-2">
+            <singleCardComponent
+                v-for="item in store.filmResults"
+                :key = "item.id" 
+                :name = "item.title" 
+                :originalName = "item.original_title"
+                :lang = "item.original_language"
+                :vote = "item.vote_average"
+                :cover = "item.poster_path"
+            />
+          </ul>
+  
+          <div class = "text-center text-red-600 py-6 text-6xl">
+            <h2>
+              TV SERIES
+            </h2>
+          </div>
+          <div>
+    
+            <ul class = "grid grid-cols-1 justify-items-center md:grid-cols-3 xl:grid-cols-5 gap-2">
+              <singleCardComponent
+                  v-for="item in store.serieResults"
+                  :key = "item.id" 
+                  :name = "item.name" 
+                  :originalName = "item.original_name"
+                  :lang = "item.original_language"
+                  :vote = "item.vote_average"
+                  :cover = "item.poster_path"
+              />
+            </ul>
+    
+          </div>
+        </div>
       </div>
+      
+      
+      
     </section>
   </main>
 </template>
@@ -135,6 +186,6 @@ h2{
 }
 main{
   background: rgb(17,24,39);
-  background: linear-gradient(180deg, rgba(17,24,39,1) 25%, rgba(48,48,48,1) 75%);
+  background: linear-gradient(-180deg, rgba(17,24,39,1) 25%, rgba(48,48,48,1) 75%);
 }
 </style>
